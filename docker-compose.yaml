@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: appimage
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      - RATE_LIMITER_HOST=:8080
+      - SUBNET_PREFIX=24
+      - TIME_COOLDOWN=60
+      - REQUESTS_LIMIT=100
+      - TIME_LIMIT=60
+    ports:
+      - 8083:8080
